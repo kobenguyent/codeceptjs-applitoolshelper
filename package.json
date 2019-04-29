@@ -1,0 +1,22 @@
+{
+  "name": "codeceptjs-applitoolshelper",
+  "version": "1.0.0",
+  "description": "Applitools helper for Codecept JS tests",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/PeterNgTr/codeceptjs-applitoolshelper.git"
+  },
+  "keywords": [
+    "codeceptJS",
+    "codeceptjs",
+    "codeceptjs-applitoolshelper",
+    "applitools"
+  ],
+  "author": "Thanh Nguyen <peter.nguyentr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/PeterNgTr/codeceptjs-applitoolshelper/issues"
+  },
+  "homepage": "https://github.com/PeterNgTr/codeceptjs-applitoolshelper#readme",
+  "main": "index.js"
+}
