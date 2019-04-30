@@ -37,7 +37,7 @@ Example:
       },
     },
     ApplitoolsHelper: {
-      require: './applitools.js',
+      require: 'codeceptjs-applitoolshelper',
       applitoolsKey: 'YOUR_API_KEY'
     }
   },
