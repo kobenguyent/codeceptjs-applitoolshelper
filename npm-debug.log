@@ -1,0 +1,110 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/thanhnguyen/.nvm/versions/node/v6.11.5/bin/node',
+1 verbose cli   '/Users/thanhnguyen/.nvm/versions/node/v6.11.5/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@3.10.10
+3 info using node@v6.11.5
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec Result {
+7 silly cache add   raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   escapedName: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/thanhnguyen/Desktop/codeceptjs-applitoolshelper',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/thanhnguyen/.npm/codeceptjs-applitoolshelper/1.0.2/package.tgz not in flight; packing
+9 verbose correctMkdir /Users/thanhnguyen/.npm correctMkdir not in flight; initializing
+10 info lifecycle codeceptjs-applitoolshelper@1.0.2~prepublish: codeceptjs-applitoolshelper@1.0.2
+11 silly lifecycle codeceptjs-applitoolshelper@1.0.2~prepublish: no script for prepublish, continuing
+12 verbose tar pack [ '/Users/thanhnguyen/.npm/codeceptjs-applitoolshelper/1.0.2/package.tgz',
+12 verbose tar pack   '/Users/thanhnguyen/Desktop/codeceptjs-applitoolshelper' ]
+13 verbose tarball /Users/thanhnguyen/.npm/codeceptjs-applitoolshelper/1.0.2/package.tgz
+14 verbose folder /Users/thanhnguyen/Desktop/codeceptjs-applitoolshelper
+15 verbose addLocalTarball adding from inside cache /Users/thanhnguyen/.npm/codeceptjs-applitoolshelper/1.0.2/package.tgz
+16 verbose correctMkdir /Users/thanhnguyen/.npm correctMkdir not in flight; initializing
+17 silly cache afterAdd codeceptjs-applitoolshelper@1.0.2
+18 verbose afterAdd /Users/thanhnguyen/.npm/codeceptjs-applitoolshelper/1.0.2/package/package.json not in flight; writing
+19 verbose correctMkdir /Users/thanhnguyen/.npm correctMkdir not in flight; initializing
+20 verbose afterAdd /Users/thanhnguyen/.npm/codeceptjs-applitoolshelper/1.0.2/package/package.json written
+21 silly publish { name: 'codeceptjs-applitoolshelper',
+21 silly publish   version: '1.0.2',
+21 silly publish   description: 'Applitools helper for Codecept JS tests',
+21 silly publish   repository:
+21 silly publish    { type: 'git',
+21 silly publish      url: 'git+ssh://git@github.com/PeterNgTr/codeceptjs-applitoolshelper.git' },
+21 silly publish   keywords:
+21 silly publish    [ 'codeceptJS',
+21 silly publish      'codeceptjs',
+21 silly publish      'codeceptjs-applitoolshelper',
+21 silly publish      'applitools' ],
+21 silly publish   author: { name: 'Thanh Nguyen', email: 'peter.nguyentr@gmail.com' },
+21 silly publish   license: 'MIT',
+21 silly publish   bugs: { url: 'https://github.com/PeterNgTr/codeceptjs-applitoolshelper/issues' },
+21 silly publish   homepage: 'https://github.com/PeterNgTr/codeceptjs-applitoolshelper#readme',
+21 silly publish   main: 'index.js',
+21 silly publish   readme: '[![NPM](https://nodei.co/npm/codeceptjs-applitoolshelper.png?compact=true)](https://nodei.co/npm/codeceptjs-applitoolshelper/)\n\n# codeceptjs-applitoolshelper\nCodeceptJS Applitools helper to integrate the applitool\n\ncodeceptjs-applitoolshelper is a [CodeceptJS](https://codecept.io/) helper which can publish tests results on [Applitools](https://applitools.com) after execution.\n\nNPM package: https://www.npmjs.com/package/codeceptjs-applitoolshelper\n\n### Installation\n```\nnpm install @wdio/eyes.webdriverio --save-dev\nnpm install codeceptjs-applitoolshelper --save-dev\n```\n\n### Configuration\n\nThis helper should be added in codecept.json/codecept.conf.js\n\nExample:\n\n```js\n  helpers: {\n    WebDriver: {\n      url: \'https://www.amazon.de\',\n      browser: "chrome",\n      desiredCapabilities: {\n        chromeOptions: {\n          args: [ "--headless", \'--disable-extensions\', \'--disable-gpu\', \'--no-sandbox\', \'--disable-dev-shm-usage\']\n        }\n      },\n      windowSize: \'1440x700\',\n      smartWait: 5000,\n      timeouts: {\n        "script": 60000,\n        "page load": 10000\n      },\n    },\n    ApplitoolsHelper: {\n      require: \'codeceptjs-applitoolshelper\',\n      applitoolsKey: \'YOUR_API_KEY\'\n    }\n  },\n```\n\nTo use this helper you need to provide the following info:\n- applitoolsKey (Required): You can find your API key under the user menu located at the right hand side of the test manager toolbar\n- windowSize (Optional): the windows size as for instance \'1440x700\', if not provided, the default 800x600 will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.\n- appName (Optional): you can either provide your desired application name, if not provided, the default \'Application Under Test\' will be used.\n\n### Scenario\n\nAn example how to use this helper\n\n```javascript\nconst { I } = inject();\n\nFeature(\'Applitools functionality\');\n\nBefore(() => {\n    I.amOnPage(\'https://applitools.com/helloworld\');\n});\n\nScenario(\'Check home page @test\', async () => {\n    I.amOnPage(\'https://applitools.com/helloworld\');\n    await I.eyesCheck(\'Homepage\');\n});\n```',
+21 silly publish   readmeFilename: 'readme.md',
+21 silly publish   gitHead: '61b90f526f176f77cbb29141e5622c9eb9333429',
+21 silly publish   _id: 'codeceptjs-applitoolshelper@1.0.2',
+21 silly publish   scripts: {},
+21 silly publish   _shasum: 'c4215c34a0b439735f26ac7e19f899ae3828db91',
+21 silly publish   _from: '.' }
+22 verbose getPublishConfig undefined
+23 silly mapToRegistry name codeceptjs-applitoolshelper
+24 silly mapToRegistry using default registry
+25 silly mapToRegistry registry https://registry.npmjs.org/
+26 silly mapToRegistry data Result {
+26 silly mapToRegistry   raw: 'codeceptjs-applitoolshelper',
+26 silly mapToRegistry   scope: null,
+26 silly mapToRegistry   escapedName: 'codeceptjs-applitoolshelper',
+26 silly mapToRegistry   name: 'codeceptjs-applitoolshelper',
+26 silly mapToRegistry   rawSpec: '',
+26 silly mapToRegistry   spec: 'latest',
+26 silly mapToRegistry   type: 'tag' }
+27 silly mapToRegistry uri https://registry.npmjs.org/codeceptjs-applitoolshelper
+28 verbose publish registryBase https://registry.npmjs.org/
+29 silly publish uploading /Users/thanhnguyen/.npm/codeceptjs-applitoolshelper/1.0.2/package.tgz
+30 verbose request uri https://registry.npmjs.org/codeceptjs-applitoolshelper
+31 verbose request sending authorization for write operation
+32 info attempt registry request try #1 at 11:25:07 AM
+33 verbose request using bearer token for auth
+34 verbose request id 7438fdc4ff5746d4
+35 http request PUT https://registry.npmjs.org/codeceptjs-applitoolshelper
+36 http 403 https://registry.npmjs.org/codeceptjs-applitoolshelper
+37 verbose headers { date: 'Tue, 30 Apr 2019 09:25:07 GMT',
+37 verbose headers   'content-type': 'application/json',
+37 verbose headers   'transfer-encoding': 'chunked',
+37 verbose headers   connection: 'keep-alive',
+37 verbose headers   'set-cookie': [ '__cfduid=d644a543b849788fc4a4d660be851a9211556616307; expires=Wed, 29-Apr-20 09:25:07 GMT; path=/; domain=.registry.npmjs.org; HttpOnly' ],
+37 verbose headers   'cf-ray': '4cf877717c9d9798-FRA',
+37 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+37 verbose headers   vary: 'Accept-Encoding',
+37 verbose headers   server: 'cloudflare',
+37 verbose headers   'content-encoding': 'gzip' }
+38 verbose request invalidating /Users/thanhnguyen/.npm/registry.npmjs.org/codeceptjs-applitoolshelper on PUT
+39 error publish Failed PUT 403
+40 verbose stack Error: You cannot publish over the previously published versions: 1.0.2. : codeceptjs-applitoolshelper
+40 verbose stack     at makeError (/Users/thanhnguyen/.nvm/versions/node/v6.11.5/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:302:12)
+40 verbose stack     at CachingRegistryClient.<anonymous> (/Users/thanhnguyen/.nvm/versions/node/v6.11.5/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:290:14)
+40 verbose stack     at /Users/thanhnguyen/.nvm/versions/node/v6.11.5/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:216:7
+40 verbose stack     at Gunzip.onEnd (zlib.js:227:5)
+40 verbose stack     at emitNone (events.js:91:20)
+40 verbose stack     at Gunzip.emit (events.js:185:7)
+40 verbose stack     at endReadableNT (_stream_readable.js:974:12)
+40 verbose stack     at _combinedTickCallback (internal/process/next_tick.js:80:11)
+40 verbose stack     at process._tickCallback (internal/process/next_tick.js:104:9)
+41 verbose statusCode 403
+42 verbose pkgid codeceptjs-applitoolshelper
+43 verbose cwd /Users/thanhnguyen/Desktop/codeceptjs-applitoolshelper
+44 error Darwin 18.5.0
+45 error argv "/Users/thanhnguyen/.nvm/versions/node/v6.11.5/bin/node" "/Users/thanhnguyen/.nvm/versions/node/v6.11.5/bin/npm" "publish"
+46 error node v6.11.5
+47 error npm  v3.10.10
+48 error code E403
+49 error You cannot publish over the previously published versions: 1.0.2. : codeceptjs-applitoolshelper
+50 error If you need help, you may report this error at:
+50 error     <https://github.com/npm/npm/issues>
+51 verbose exit [ 1, true ]
