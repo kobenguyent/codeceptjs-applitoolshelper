@@ -38,7 +38,7 @@ Example:
     },
     ApplitoolsHelper: {
       require: './applitools.js',
-      applitoolsKey: 'YVqFtb103AFxBEAEI7uz2V1sjTS3SWPFgTWgDFsGyfkFg110'
+      applitoolsKey: 'YOUR_API_KEY'
     }
   },
 ```
