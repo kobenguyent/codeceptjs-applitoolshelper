@@ -20,18 +20,16 @@ This helper should be added in codecept.json/codecept.conf.js
 Example:
 
 ```js
-{
   helpers: {
     WebDriver: {
       url: 'https://www.amazon.de',
-      manualStart: true,
       browser: "chrome",
       desiredCapabilities: {
         chromeOptions: {
           args: [ "--headless", '--disable-extensions', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
         }
       },
-      windowSize: "1440x700",
+      windowSize: '1440x700',
       smartWait: 5000,
       timeouts: {
         "script": 60000,
@@ -39,17 +37,32 @@ Example:
       },
     },
     ApplitoolsHelper: {
-      require: 'codeceptjs-applitoolshelper',
-      applitoolsKey: 'YOUR_API_KEY',
-      width: 1440,
-      height: 700
+      require: './applitools.js',
+      applitoolsKey: 'YVqFtb103AFxBEAEI7uz2V1sjTS3SWPFgTWgDFsGyfkFg110'
     }
   },
-}
 ```
 
 To use this helper you need to provide the following info:
-- Important: add this `manualStart: true` to WebDriver helper
 - applitoolsKey (Required): You can find your API key under the user menu located at the right hand side of the test manager toolbar
-- width/height (Optional): the windows size, if not provided, the default 800x600 will be used.
+- windowSize (Optional): the windows size as for instance '1440x700', if not provided, the default 800x600 will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
 - appName (Optional): you can either provide your desired application name, if not provided, the default 'Application Under Test' will be used.
+
+### Scenario
+
+An example how to use this helper
+
+```javascript
+const { I } = inject();
+
+Feature('Applitools functionality');
+
+Before(() => {
+    I.amOnPage('https://applitools.com/helloworld');
+});
+
+Scenario('Check home page @test', async () => {
+    I.amOnPage('https://applitools.com/helloworld');
+    await I.eyesCheck('Homepage');
+});
+```
