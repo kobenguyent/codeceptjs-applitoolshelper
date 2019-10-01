@@ -3,7 +3,6 @@ let eyes = new Eyes();
 let Helper = codecept_helper;
 let windowsSize;
 let appName;
-let config;
 
 class ApplitoolsHelper extends Helper {
 
@@ -22,7 +21,7 @@ class ApplitoolsHelper extends Helper {
         } else if (this.helpers['WebDriver'].config.windowSize) {
             windowsSize = this._getWindowsSize(this.helpers['WebDriver'].config);
         } else {
-            windowsSize = { width: 800, height: 600 };
+            windowsSize = {'width': 1920, 'height': 600};
         }
 
         let client = await this.helpers['WebDriver']._startBrowser();
@@ -33,7 +32,7 @@ class ApplitoolsHelper extends Helper {
         return { width: parseInt(config.windowSize.split('x')[0], 10), height: parseInt(config.windowSize.split('x')[1], 10) }
     }
 
-    async eyesCheck(pageName) {
+    async eyeCheck(pageName) {
         await eyes.check(pageName, Target.window());
         await eyes.close();
     }

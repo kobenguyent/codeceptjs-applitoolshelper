@@ -9,13 +9,12 @@ NPM package: https://www.npmjs.com/package/codeceptjs-applitoolshelper
 
 ### Installation
 ```
-npm install @wdio/eyes.webdriverio --save-dev
-npm install codeceptjs-applitoolshelper --save-dev
+npm install codeceptjs-applitoolshelper --save
 ```
 
 ### Configuration
 
-This helper should be added in codecept.json/codecept.conf.js
+This helper should be added in `codecept.json/codecept.conf.js`
 
 Example:
 
@@ -29,7 +28,7 @@ Example:
           args: [ "--headless", '--disable-extensions', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
         }
       },
-      windowSize: '1440x700',
+      windowSize: '1920x600',
       smartWait: 5000,
       timeouts: {
         "script": 60000,
@@ -45,7 +44,7 @@ Example:
 
 To use this helper you need to provide the following info:
 - applitoolsKey (Required): You can find your API key under the user menu located at the right hand side of the test manager toolbar
-- windowSize (Optional): the windows size as for instance '1440x700', if not provided, the default 800x600 will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
+- windowSize (Optional): the windows size as for instance '1440x700', if not provided, the default 1920x600 will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
 - appName (Optional): you can either provide your desired application name, if not provided, the default 'Application Under Test' will be used.
 
 ### Scenario
@@ -63,6 +62,6 @@ Before(() => {
 
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
-    await I.eyesCheck('Homepage');
+    await I.eyeCheck('Homepage');
 });
 ```
