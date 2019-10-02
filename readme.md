@@ -3,13 +3,13 @@
 # codeceptjs-applitoolshelper
 CodeceptJS Applitools helper to integrate the applitool
 
-codeceptjs-applitoolshelper is a [CodeceptJS](https://codecept.io/) helper which can publish tests results on [Applitools](https://applitools.com) after execution.
+codeceptjs-applitoolshelper is a [CodeceptJS](https://codecept.io/) helper which can publish tests results on [Applitools](https://applitools.com) after the tests execution.
 
 NPM package: https://www.npmjs.com/package/codeceptjs-applitoolshelper
 
 ### Installation
 ```
-npm install codeceptjs-applitoolshelper --save
+npm i codeceptjs-applitoolshelper --save
 ```
 
 ### Configuration
@@ -19,20 +19,21 @@ This helper should be added in `codecept.json/codecept.conf.js`
 Example:
 
 ```js
+...
   helpers: {
     WebDriver: {
       url: 'https://www.amazon.de',
-      browser: "chrome",
+      browser: 'chrome',
       desiredCapabilities: {
         chromeOptions: {
-          args: [ "--headless", '--disable-extensions', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
+          args: [ '--headless', '--disable-extensions', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
         }
       },
       windowSize: '1920x600',
       smartWait: 5000,
       timeouts: {
-        "script": 60000,
-        "page load": 10000
+        'script': 60000,
+        'page load': 10000
       },
     },
     ApplitoolsHelper: {
@@ -40,18 +41,19 @@ Example:
       applitoolsKey: 'YOUR_API_KEY'
     }
   },
+...
 ```
 
 To use this helper you need to provide the following info:
-- applitoolsKey (Required): You can find your API key under the user menu located at the right hand side of the test manager toolbar
-- windowSize (Optional): the windows size as for instance '1440x700', if not provided, the default 1920x600 will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
-- appName (Optional): you can either provide your desired application name, if not provided, the default 'Application Under Test' will be used.
+- `applitoolsKey` (Required): You can find your API key under the user menu located at the right hand side of the test manager toolbar
+- `windowSize` (Optional): the windows size as for instance `1440x700`, if not provided, the default `1920x600` will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
+- `appName` (Optional): you can either provide your desired application name, if not provided, the default 'Application Under Test' will be used.
 
 ### Scenario
 
 An example how to use this helper
 
-```javascript
+```js
 const { I } = inject();
 
 Feature('Applitools functionality');
