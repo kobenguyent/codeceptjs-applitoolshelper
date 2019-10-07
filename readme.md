@@ -10,6 +10,7 @@ NPM package: https://www.npmjs.com/package/codeceptjs-applitoolshelper
 ### Installation
 ```
 npm i codeceptjs-applitoolshelper --save
+npm i webdriverio@5 --save
 ```
 
 ### Configuration
@@ -22,7 +23,7 @@ Example:
 ...
   helpers: {
     WebDriver: {
-      url: 'https://www.amazon.de',
+      url: 'https://applitools.com/helloworld',
       browser: 'chrome',
       desiredCapabilities: {
         chromeOptions: {
@@ -67,3 +68,5 @@ Scenario('Check home page @test', async () => {
     await I.eyeCheck('Homepage');
 });
 ```
+
+For your reference, you can check out this repo: https://github.com/PeterNgTr/applitools-example
