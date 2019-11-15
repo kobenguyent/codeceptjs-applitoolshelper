@@ -3,17 +3,17 @@ let eyes = new Eyes();
 let Helper = codecept_helper;
 let windowsSize;
 let appName;
+let client;
 
 class ApplitoolsHelper extends Helper {
 
     constructor(config) {
         super(config);
         this.config = config;
-        eyes.setApiKey(config.applitoolsKey);
         appName = config.appName || 'Application Under Test';
     }
 
-    async _beforeSuite(suite) {
+    async _beforeSuite() {
         this.helpers['WebDriver'].config.manualStart = true;
         this.helpers['WebDriver'].options.manualStart = true;
         if (this.config.windowSize) {
@@ -23,20 +23,27 @@ class ApplitoolsHelper extends Helper {
         } else {
             windowsSize = {'width': 1920, 'height': 600};
         }
-
-        let client = await this.helpers['WebDriver']._startBrowser();
-        await eyes.open(client, appName, suite.title, windowsSize);
+        if (client) {
+            await this.helpers['WebDriver']._stopBrowser();
+        }
+        client = await this.helpers['WebDriver']._startBrowser();
     }
 
     _getWindowsSize(config) {
         return { width: parseInt(config.windowSize.split('x')[0], 10), height: parseInt(config.windowSize.split('x')[1], 10) }
     }
 
-    async eyeCheck(pageName) {
+    _generateRandomString() {
+        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+    }
+
+    async eyeCheck(pageName, uniqueId=this._generateRandomString()) {
+        eyes.setApiKey(this.config.applitoolsKey);
+        eyes.setBatch(pageName, uniqueId); 
+        await eyes.open(client, appName, pageName, windowsSize);
         await eyes.check(pageName, Target.window());
         await eyes.close();
     }
-
 }
 
 module.exports = ApplitoolsHelper;
