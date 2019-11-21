@@ -59,14 +59,25 @@ const { I } = inject();
 
 Feature('Applitools functionality');
 
-Before(() => {
-    I.amOnPage('https://applitools.com/helloworld');
-});
-
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
     await I.eyeCheck('Homepage');
 });
+
+// Provide the second param to gather multiple tests
+// more info could be found here https://help.applitools.com/hc/en-us/articles/360006914772-Batching
+Scenario('Check home page @test', async () => {
+    I.amOnPage('https://applitools.com/helloworld');
+    await I.eyeCheck('Homepage', 'Layout');
+});
+
+// Provide the third param to set the match level
+// more info could be found here https://help.applitools.com/hc/en-us/articles/360007188591-Match-Levels
+Scenario('Check home page @test', async () => {
+    I.amOnPage('https://applitools.com/helloworld');
+    await I.eyeCheck('Homepage', 'Homepage', 'Layout');
+});
+
 ```
 
 For your reference, you can check out this repo: https://github.com/PeterNgTr/applitools-example

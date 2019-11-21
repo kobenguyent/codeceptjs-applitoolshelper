@@ -37,12 +37,12 @@ class ApplitoolsHelper extends Helper {
         return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
     }
 
-    /*
+    /**
     * @param pageName {String} name of the page you want to check
-    * @param matchLevel {String} set the match level. Possible values: Extract, Strict, Content, Layout
     * @param uniqueId {String} provide a unique id to combine tests into a batch
+    * @param matchLevel {String} set the match level. Possible values: Extract, Strict, Content, Layout
     * 
-    */
+     */
     async eyeCheck(pageName, uniqueId, matchLevel) {
         eyes.setApiKey(this.config.applitoolsKey);
         eyes.setForceFullPageScreenshot(true);
