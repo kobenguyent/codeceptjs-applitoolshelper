@@ -40,6 +40,7 @@ class ApplitoolsHelper extends Helper {
     /**
     * @param pageName {String} name of the page you want to check
     * @param uniqueId {String} provide a unique id to combine tests into a batch
+    * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
     * 
      */
     async eyeCheck(pageName, uniqueId, matchLevel) {
@@ -55,6 +56,30 @@ class ApplitoolsHelper extends Helper {
         
         await eyes.open(client, appName, pageName, windowsSize);
         await eyes.check(pageName, Target.window());
+        await eyes.close();
+    }
+
+    /**
+    * @param pageName {String} name of the page you want to check
+    * @param element {String} target element on the page that Applitools will focus on
+    * @param uniqueId {String} provide a unique id to combine tests into a batch
+    * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
+    * 
+     */
+    async eyeCheckRegion(pageName, element, uniqueId, matchLevel) {
+        eyes.setApiKey(this.config.applitoolsKey);
+        eyes.setForceFullPageScreenshot(false);
+
+        if (uniqueId) {
+            eyes.setBatch(pageName, uniqueId);
+        }
+
+        if (matchLevel) {
+            eyes.setMatchLevel(matchLevel);
+        }
+        
+        await eyes.open(client, appName, pageName, windowsSize);
+        await eyes.check(pageName, Target.region(element));
         await eyes.close();
     }
 }
