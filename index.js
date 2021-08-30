@@ -1,4 +1,4 @@
-const { Eyes, Target } = require('@wdio/eyes.webdriverio');
+const { Eyes, Target } = require('@applitools/eyes-webdriverio');
 let eyes = new Eyes();
 let Helper = codecept_helper;
 let windowsSize;
@@ -40,7 +40,6 @@ class ApplitoolsHelper extends Helper {
     /**
     * @param pageName {String} name of the page you want to check
     * @param uniqueId {String} provide a unique id to combine tests into a batch
-    * @param matchLevel {String} set the match level. Possible values: Extract, Strict, Content, Layout
     * 
      */
     async eyeCheck(pageName, uniqueId, matchLevel) {
