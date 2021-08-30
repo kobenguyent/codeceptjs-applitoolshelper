@@ -78,6 +78,14 @@ Scenario('Check home page @test', async () => {
     await I.eyeCheck('Homepage', 'Homepage', 'Layout');
 });
 
+// To be able to focus just on a single element instead of the full page, use I.eyeCheckRegion() method
+// more info could be found here https://www.npmjs.com/package/@applitools/eyes-webdriverio#region-screenshot
+Scenario('Check a CTA button on home page @test', async () => {
+    const targetElement = 'div.section.button-section > button';
+    I.amOnPage('https://applitools.com/helloworld');
+    await I.eyeCheckRegion('Homepage', targetElement, 'Homepage', 'Layout');
+});
+
 ```
 
 For your reference, you can check out this repo: https://github.com/PeterNgTr/applitools-example
