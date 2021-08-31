@@ -39,13 +39,14 @@ class ApplitoolsHelper extends Helper {
 
     /**
     * @param pageName {String} name of the page you want to check
+    * @param element {String} selector of the target element which will be used as area for screenshot
     * @param uniqueId {String} provide a unique id to combine tests into a batch
     * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
     * 
      */
-    async eyeCheck(pageName, uniqueId, matchLevel) {
+    async eyeCheck(pageName, element, uniqueId, matchLevel) {
         eyes.setApiKey(this.config.applitoolsKey);
-        eyes.setForceFullPageScreenshot(true);
+
         if (uniqueId) {
             eyes.setBatch(pageName, uniqueId); 
         }
@@ -53,33 +54,17 @@ class ApplitoolsHelper extends Helper {
         if (matchLevel) {
             eyes.setMatchLevel(matchLevel);
         }
-        
+
         await eyes.open(client, appName, pageName, windowsSize);
-        await eyes.check(pageName, Target.window());
-        await eyes.close();
-    }
 
-    /**
-    * @param pageName {String} name of the page you want to check
-    * @param element {String} target element on the page that Applitools will focus on
-    * @param uniqueId {String} provide a unique id to combine tests into a batch
-    * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
-    * 
-     */
-    async eyeCheckRegion(pageName, element, uniqueId, matchLevel) {
-        eyes.setApiKey(this.config.applitoolsKey);
-        eyes.setForceFullPageScreenshot(false);
-
-        if (uniqueId) {
-            eyes.setBatch(pageName, uniqueId);
-        }
-
-        if (matchLevel) {
-            eyes.setMatchLevel(matchLevel);
+        if (element) {
+            eyes.setForceFullPageScreenshot(false);
+            await eyes.check(pageName, Target.region(element));
+        } else {
+            eyes.setForceFullPageScreenshot(true);
+            await eyes.check(pageName, Target.window());
         }
         
-        await eyes.open(client, appName, pageName, windowsSize);
-        await eyes.check(pageName, Target.region(element));
         await eyes.close();
     }
 }
