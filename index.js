@@ -44,7 +44,7 @@ class ApplitoolsHelper extends Helper {
     * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
     * 
      */
-    async eyeCheck(pageName, element, uniqueId, matchLevel) {
+    async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
         eyes.setApiKey(this.config.applitoolsKey);
 
         if (uniqueId) {
