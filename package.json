@@ -20,6 +20,7 @@
   "homepage": "https://github.com/PeterNgTr/codeceptjs-applitoolshelper#readme",
   "main": "index.js",
   "dependencies": {
+    "@applitools/eyes-playwright": "^1.11.3",
     "@applitools/eyes-webdriverio": "^5.32"
   }
 }

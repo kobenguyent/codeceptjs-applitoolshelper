@@ -1,5 +1,3 @@
-const { Eyes, Target } = require('@applitools/eyes-webdriverio');
-let eyes = new Eyes();
 let Helper = codecept_helper;
 let windowsSize;
 let appName;
@@ -14,19 +12,30 @@ class ApplitoolsHelper extends Helper {
     }
 
     async _beforeSuite() {
-        this.helpers['WebDriver'].config.manualStart = true;
-        this.helpers['WebDriver'].options.manualStart = true;
+        let _helper;
+
+        if (this.helpers['WebDriver']) {
+            _helper = this.helpers['WebDriver'];
+        }
+
+        if (this.helpers['Playwright']) {
+            _helper = this.helpers['Playwright'];
+        }
+
+
+        _helper.config.manualStart = true;
+        _helper.options.manualStart = true;
         if (this.config.windowSize) {
             windowsSize = this._getWindowsSize(this.config);
-        } else if (this.helpers['WebDriver'].config.windowSize) {
-            windowsSize = this._getWindowsSize(this.helpers['WebDriver'].config);
+        } else if (_helper.config.windowSize) {
+            windowsSize = this._getWindowsSize(_helper.config);
         } else {
-            windowsSize = {'width': 1920, 'height': 600};
+            windowsSize = {width: 1920, height: 600};
         }
         if (client) {
-            await this.helpers['WebDriver']._stopBrowser();
+            await _helper._stopBrowser();
         }
-        client = await this.helpers['WebDriver']._startBrowser();
+        //client = await this.helpers[_helper]._startBrowser();
     }
 
     _getWindowsSize(config) {
@@ -42,13 +51,14 @@ class ApplitoolsHelper extends Helper {
     * @param element {String} selector of the target element which will be used as area for screenshot
     * @param uniqueId {String} provide a unique id to combine tests into a batch
     * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
-    * 
+    *
      */
     async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
-        eyes.setApiKey(this.config.applitoolsKey);
+        const { playwrightEyes, wdioEyes } = require('./lib/Applitools');
+        const { eyes, Target } = playwrightEyes(this.config.applitoolsKey);
 
         if (uniqueId) {
-            eyes.setBatch(pageName, uniqueId); 
+            eyes.setBatch(pageName, uniqueId);
         }
 
         if (matchLevel) {
@@ -64,7 +74,7 @@ class ApplitoolsHelper extends Helper {
             eyes.setForceFullPageScreenshot(true);
             await eyes.check(pageName, Target.window());
         }
-        
+
         await eyes.close();
     }
 }
