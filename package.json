@@ -20,6 +20,6 @@
   "homepage": "https://github.com/PeterNgTr/codeceptjs-applitoolshelper#readme",
   "main": "index.js",
   "dependencies": {
-    "@wdio/eyes.webdriverio": "^2.0.5"
+    "@applitools/eyes-webdriverio": "^5.32"
   }
 }

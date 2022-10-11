@@ -59,23 +59,32 @@ const { I } = inject();
 
 Feature('Applitools functionality');
 
+// Provide just the page name to take a full page screenshot
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
     await I.eyeCheck('Homepage');
 });
 
-// Provide the second param to gather multiple tests
+// To be able to focus just on a single element instead of the full page, provide the element selector 
+// more info could be found here https://www.npmjs.com/package/@applitools/eyes-webdriverio#region-screenshot
+Scenario('Check a CTA button on home page @test', async () => {
+    const targetElement = 'div.section.button-section > button';
+    I.amOnPage('https://applitools.com/helloworld');
+    await I.eyeCheck('CTA button', targetElement);
+});
+
+// Provide the third param to gather multiple tests
 // more info could be found here https://help.applitools.com/hc/en-us/articles/360006914772-Batching
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
-    await I.eyeCheck('Homepage', 'Layout');
+    await I.eyeCheck('Homepage', undefined, 'Unique ID');
 });
 
-// Provide the third param to set the match level
+// Provide the fourth param to set the match level
 // more info could be found here https://help.applitools.com/hc/en-us/articles/360007188591-Match-Levels
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
-    await I.eyeCheck('Homepage', 'Homepage', 'Layout');
+    await I.eyeCheck('Homepage', undefined, 'Unique ID', 'Layout');
 });
 
 ```

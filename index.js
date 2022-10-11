@@ -1,4 +1,4 @@
-const { Eyes, Target } = require('@wdio/eyes.webdriverio');
+const { Eyes, Target } = require('@applitools/eyes-webdriverio');
 let eyes = new Eyes();
 let Helper = codecept_helper;
 let windowsSize;
@@ -39,13 +39,14 @@ class ApplitoolsHelper extends Helper {
 
     /**
     * @param pageName {String} name of the page you want to check
+    * @param element {String} selector of the target element which will be used as area for screenshot
     * @param uniqueId {String} provide a unique id to combine tests into a batch
-    * @param matchLevel {String} set the match level. Possible values: Extract, Strict, Content, Layout
+    * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
     * 
      */
-    async eyeCheck(pageName, uniqueId, matchLevel) {
+    async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
         eyes.setApiKey(this.config.applitoolsKey);
-        eyes.setForceFullPageScreenshot(true);
+
         if (uniqueId) {
             eyes.setBatch(pageName, uniqueId); 
         }
@@ -53,9 +54,17 @@ class ApplitoolsHelper extends Helper {
         if (matchLevel) {
             eyes.setMatchLevel(matchLevel);
         }
-        
+
         await eyes.open(client, appName, pageName, windowsSize);
-        await eyes.check(pageName, Target.window());
+
+        if (element) {
+            eyes.setForceFullPageScreenshot(false);
+            await eyes.check(pageName, Target.region(element));
+        } else {
+            eyes.setForceFullPageScreenshot(true);
+            await eyes.check(pageName, Target.window());
+        }
+        
         await eyes.close();
     }
 }
