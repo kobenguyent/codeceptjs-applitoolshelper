@@ -2,6 +2,8 @@ let Helper = codecept_helper;
 let windowsSize;
 let appName;
 let client;
+let batchInfo;
+const supportedHelper = ['Playwright', 'WebDriver'];
 
 class ApplitoolsHelper extends Helper {
 
@@ -9,33 +11,43 @@ class ApplitoolsHelper extends Helper {
         super(config);
         this.config = config;
         appName = config.appName || 'Application Under Test';
+        batchInfo = config.batchInfo || 'Visual Tests with the Classic Runner'
     }
 
-    async _beforeSuite() {
+    async _before() {
         let _helper;
 
-        if (this.helpers['WebDriver']) {
-            _helper = this.helpers['WebDriver'];
+        for (const item of supportedHelper) {
+            if (this.helpers[item]) {
+                _helper = item;
+                break;
+            }
         }
 
-        if (this.helpers['Playwright']) {
-            _helper = this.helpers['Playwright'];
-        }
+        if (!_helper) throw Error('Not supported Helper!');
 
-
-        _helper.config.manualStart = true;
-        _helper.options.manualStart = true;
+        this.helpers[_helper].config.manualStart = true;
+        this.helpers[_helper].options.manualStart = true;
         if (this.config.windowSize) {
             windowsSize = this._getWindowsSize(this.config);
-        } else if (_helper.config.windowSize) {
-            windowsSize = this._getWindowsSize(_helper.config);
+        } else if (this.helpers[_helper].config.windowSize) {
+            windowsSize = this._getWindowsSize(this.helpers[_helper].config);
         } else {
             windowsSize = {width: 1920, height: 600};
         }
         if (client) {
-            await _helper._stopBrowser();
+            await this.helpers[_helper]._stopBrowser();
         }
-        //client = await this.helpers[_helper]._startBrowser();
+
+        if (_helper === 'Playwright') {
+            const { page } = this.helpers[_helper];
+            client = page;
+        }
+
+        if (_helper === 'WebDriver') {
+            const { browser } = this.helpers[_helper];
+            client = browser;
+        }
     }
 
     _getWindowsSize(config) {
@@ -47,15 +59,15 @@ class ApplitoolsHelper extends Helper {
     }
 
     /**
-    * @param pageName {String} name of the page you want to check
-    * @param element {String} selector of the target element which will be used as area for screenshot
-    * @param uniqueId {String} provide a unique id to combine tests into a batch
-    * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
-    *
+     * @param pageName {String} name of the page you want to check
+     * @param element {String} selector of the target element which will be used as area for screenshot
+     * @param uniqueId {String} provide a unique id to combine tests into a batch
+     * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
+     *
      */
     async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
         const { playwrightEyes, wdioEyes } = require('./lib/Applitools');
-        const { eyes, Target } = playwrightEyes(this.config.applitoolsKey);
+        const { eyes, Target } = await playwrightEyes(this.config);
 
         if (uniqueId) {
             eyes.setBatch(pageName, uniqueId);
@@ -71,11 +83,10 @@ class ApplitoolsHelper extends Helper {
             eyes.setForceFullPageScreenshot(false);
             await eyes.check(pageName, Target.region(element));
         } else {
-            eyes.setForceFullPageScreenshot(true);
-            await eyes.check(pageName, Target.window());
+            await eyes.check(pageName, Target.window().fully().layout());
         }
 
-        await eyes.close();
+        await eyes.closeAsync();
     }
 }
 

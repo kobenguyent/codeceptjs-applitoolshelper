@@ -22,9 +22,9 @@ Example:
 ```js
 ...
   helpers: {
-    WebDriver: {
+    Playwright: {
       url: 'https://applitools.com/helloworld',
-      browser: 'chrome',
+      browser: 'chromium',
       desiredCapabilities: {
         chromeOptions: {
           args: [ '--headless', '--disable-extensions', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
@@ -44,15 +44,17 @@ Example:
   },
 ...
 ```
+[![Screenshot](http://g.recordit.co/5kDTZ3TLAS.gif)]
 
 To use this helper you need to provide the following info:
 - `applitoolsKey` (Required): You can find your API key under the user menu located at the right hand side of the test manager toolbar
 - `windowSize` (Optional): the windows size as for instance `1440x700`, if not provided, the default `1920x600` will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
 - `appName` (Optional): you can either provide your desired application name, if not provided, the default 'Application Under Test' will be used.
+- `batchInfo` (Optional): you can either provide your desired batch info, if not provided, the default 'Visual Tests with the Classic Runner' will be used.
 
 ### Scenario
 
-An example how to use this helper
+Usage example
 
 ```js
 const { I } = inject();
@@ -62,7 +64,7 @@ Feature('Applitools functionality');
 // Provide just the page name to take a full page screenshot
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
-    await I.eyeCheck('Homepage');
+    await I.eyeCheck({ pageName: 'Homepage' });
 });
 
 // To be able to focus just on a single element instead of the full page, provide the element selector 
@@ -70,23 +72,25 @@ Scenario('Check home page @test', async () => {
 Scenario('Check a CTA button on home page @test', async () => {
     const targetElement = 'div.section.button-section > button';
     I.amOnPage('https://applitools.com/helloworld');
-    await I.eyeCheck('CTA button', targetElement);
+    await I.eyeCheck({ pageName: 'CTA button', element: targetElement });
 });
 
 // Provide the third param to gather multiple tests
 // more info could be found here https://help.applitools.com/hc/en-us/articles/360006914772-Batching
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
-    await I.eyeCheck('Homepage', undefined, 'Unique ID');
+    await I.eyeCheck({ pageName: 'Homepage', uniqueId: 'Unique ID' });
 });
 
 // Provide the fourth param to set the match level
 // more info could be found here https://help.applitools.com/hc/en-us/articles/360007188591-Match-Levels
 Scenario('Check home page @test', async () => {
     I.amOnPage('https://applitools.com/helloworld');
-    await I.eyeCheck('Homepage', undefined, 'Unique ID', 'Layout');
+    await I.eyeCheck({ pageName: 'Homepage', matchLevel: 'Layout' });
 });
 
 ```
+
+
 
 For your reference, you can check out this repo: https://github.com/PeterNgTr/applitools-example
