@@ -3,7 +3,7 @@ let windowsSize;
 let appName;
 let client;
 let batchInfo;
-const supportedHelper = ['Playwright', 'WebDriver'];
+const supportedHelper = ['Playwright', 'WebDriver', 'Puppeteer'];
 
 class ApplitoolsHelper extends Helper {
 
@@ -24,7 +24,7 @@ class ApplitoolsHelper extends Helper {
             }
         }
 
-        if (!_helper) throw Error('Not supported Helper!');
+        if (!_helper) throw Error(`Not supported Helper! Supported helpers are ${supportedHelper.join(',')}`);
 
         this.helpers[_helper].config.manualStart = true;
         this.helpers[_helper].options.manualStart = true;
@@ -39,7 +39,7 @@ class ApplitoolsHelper extends Helper {
             await this.helpers[_helper]._stopBrowser();
         }
 
-        if (_helper === 'Playwright') {
+        if (_helper === 'Playwright' || _helper === 'Puppeteer') {
             const { page } = this.helpers[_helper];
             client = page;
         }

@@ -15,7 +15,7 @@ npm i webdriverio@5 --save
 
 ### Configuration
 
-This helper should be added in `codecept.json/codecept.conf.js`
+This helper should be added in `codecept.conf.ts/codecept.conf.js`
 
 Example:
 
