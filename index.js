@@ -1,9 +1,12 @@
+const { getWindowsSize } = require('./lib/Common');
+
 let Helper = codecept_helper;
 let windowsSize;
 let appName;
 let client;
 let batchInfo;
 const supportedHelper = ['Playwright', 'WebDriver', 'Puppeteer'];
+let _helper;
 
 class ApplitoolsHelper extends Helper {
 
@@ -15,8 +18,6 @@ class ApplitoolsHelper extends Helper {
     }
 
     async _before() {
-        let _helper;
-
         for (const item of supportedHelper) {
             if (this.helpers[item]) {
                 _helper = item;
@@ -29,9 +30,9 @@ class ApplitoolsHelper extends Helper {
         this.helpers[_helper].config.manualStart = true;
         this.helpers[_helper].options.manualStart = true;
         if (this.config.windowSize) {
-            windowsSize = this._getWindowsSize(this.config);
+            windowsSize = getWindowsSize(this.config);
         } else if (this.helpers[_helper].config.windowSize) {
-            windowsSize = this._getWindowsSize(this.helpers[_helper].config);
+            windowsSize = getWindowsSize(this.helpers[_helper].config);
         } else {
             windowsSize = {width: 1920, height: 600};
         }
@@ -50,13 +51,6 @@ class ApplitoolsHelper extends Helper {
         }
     }
 
-    _getWindowsSize(config) {
-        return { width: parseInt(config.windowSize.split('x')[0], 10), height: parseInt(config.windowSize.split('x')[1], 10) }
-    }
-
-    _generateRandomString() {
-        return Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
-    }
 
     /**
      * @param pageName {String} name of the page you want to check
@@ -66,8 +60,8 @@ class ApplitoolsHelper extends Helper {
      *
      */
     async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
-        const { playwrightEyes, wdioEyes } = require('./lib/Applitools');
-        const { eyes, Target } = await playwrightEyes(this.config);
+        const { playwrightEyes, webdriverEyes, puppeteerEyes } = require('./lib/Applitools');
+        const { eyes, Target } = `${_helper.toLowerCase()}Eyes`.call(this.config);
 
         if (uniqueId) {
             eyes.setBatch(pageName, uniqueId);
