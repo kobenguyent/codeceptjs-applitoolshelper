@@ -12,16 +12,16 @@
     "codeceptjs-applitoolshelper",
     "applitools"
   ],
-  "author": "Thanh Nguyen <peter.nguyentr@gmail.com>",
+  "author": "Kobenguyent <kobenguyent@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PeterNgTr/codeceptjs-applitoolshelper/issues"
+    "url": "https://github.com/kobenguyent/codeceptjs-applitoolshelper/issues"
   },
-  "homepage": "https://github.com/PeterNgTr/codeceptjs-applitoolshelper#readme",
+  "homepage": "https://github.com/kobenguyent/codeceptjs-applitoolshelper#readme",
   "main": "index.js",
   "dependencies": {
-    "@applitools/eyes-playwright": "^1.11.3",
-    "@applitools/eyes-puppeteer": "^1.11.4",
-    "@applitools/eyes-webdriverio": "^5.32"
+    "@applitools/eyes-playwright": "1.11.3",
+    "@applitools/eyes-puppeteer": "1.11.4",
+    "@applitools/eyes-webdriverio": "5.32"
   }
 }
