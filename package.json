@@ -4,7 +4,7 @@
   "description": "Applitools helper for Codecept JS tests",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/PeterNgTr/codeceptjs-applitoolshelper.git"
+    "url": "git+ssh://git@github.com/kobenguyent/codeceptjs-applitoolshelper.git"
   },
   "keywords": [
     "codeceptJS",
