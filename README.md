@@ -1,9 +1,10 @@
+[!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/peternguyew)
 [![NPM](https://nodei.co/npm/codeceptjs-applitoolshelper.png?compact=true)](https://nodei.co/npm/codeceptjs-applitoolshelper/)
 
 # codeceptjs-applitoolshelper
-CodeceptJS Applitools helper to integrate the applitool
+CodeceptJS Applitools integration.
 
-codeceptjs-applitoolshelper is a [CodeceptJS](https://codecept.io/) helper which can publish tests results on [Applitools](https://applitools.com) after the tests execution.
+codeceptjs-applitoolshelper is a [CodeceptJS](https://codecept.io/) helper which can publish tests results on [Applitools](https://applitools.com) after the tests' execution.
 
 NPM package: https://www.npmjs.com/package/codeceptjs-applitoolshelper
 
@@ -47,7 +48,7 @@ Example:
 [![Screenshot](http://g.recordit.co/5kDTZ3TLAS.gif)]
 
 To use this helper you need to provide the following info:
-- `applitoolsKey` (Required): You can find your API key under the user menu located at the right hand side of the test manager toolbar
+- `applitoolsKey` (Required): You can find your API key under the user menu located on the right hand side of the test manager toolbar
 - `windowSize` (Optional): the windows size as for instance `1440x700`, if not provided, the default `1920x600` will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
 - `appName` (Optional): you can either provide your desired application name, if not provided, the default 'Application Under Test' will be used.
 - `batchInfo` (Optional): you can either provide your desired batch info, if not provided, the default 'Visual Tests with the Classic Runner' will be used.
@@ -90,7 +91,5 @@ Scenario('Check home page @test', async () => {
 });
 
 ```
-
-
 
 For your reference, you can check out this repo: https://github.com/PeterNgTr/applitools-example
