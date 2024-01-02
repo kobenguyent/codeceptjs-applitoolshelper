@@ -1,4 +1,5 @@
 const { getWindowsSize } = require('./lib/Common');
+const { initEyesSdk } = require("./lib/Applitools");
 
 let Helper = codecept_helper;
 let windowsSize;
@@ -42,14 +43,12 @@ class ApplitoolsHelper extends Helper {
             await this.helpers[_helper]._stopBrowser();
         }
 
-        if (_helper === 'Playwright' || _helper === 'Puppeteer') {
-            const { page } = this.helpers[_helper];
-            client = page;
+        if (['Playwright', 'Puppeteer'].includes(_helper)) {
+            client = this.helpers[_helper].page;
         }
 
         if (_helper === 'WebDriver') {
-            const { browser } = this.helpers[_helper];
-            client = browser;
+            client = this.helpers[_helper].browser;
         }
     }
 
@@ -57,30 +56,14 @@ class ApplitoolsHelper extends Helper {
     /**
      * Visual check using the eyeCheck method
      *
-     * @param pageName {String} name of the page you want to check
-     * @param element {String} selector of the target element which will be used as area for screenshot
-     * @param uniqueId {String} provide a unique id to combine tests into a batch
-     * @param matchLevel {String} set the match level. Possible values: Exact, Strict, Content, Layout
+     * @param {String} pageName name of the page you want to check
+     * @param {String} element selector of the target element which will be used as area for screenshot
+     * @param {String} [uniqueId] provide a unique id to combine tests into a batch
+     * @param {String} [matchLevel] set the match level. Possible values: Exact, Strict, Content, Layout
      *
      */
     async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
-        let eyesInstance;
-        let eyes;
-        let Target;
-
-        if (_helper.toLowerCase() === 'playwright') {
-            const { playwrightEyes } = require('./lib/Applitools');
-            eyesInstance = await playwrightEyes(this.config);
-        } else if (_helper.toLowerCase() === 'webdriver') {
-            const { webdriverEyes } = require('./lib/Applitools');
-            eyesInstance = await webdriverEyes(this.config);
-        } else if (_helper.toLowerCase() === 'puppeteer') {
-            const { puppeteerEyes } = require('./lib/Applitools');
-            eyesInstance = await puppeteerEyes(this.config);
-        }
-
-        eyes = eyesInstance.eyes;
-        Target = eyesInstance.Target;
+        const { eyes, Target } = initEyesSdk(_helper.toLowerCase(), this.config);
 
         if (uniqueId) {
             eyes.setBatch(pageName, uniqueId);
