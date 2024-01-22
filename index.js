@@ -83,6 +83,7 @@ class ApplitoolsHelper extends Helper {
         }
 
         await eyes.closeAsync();
+        return eyes.getResults();
     }
 }
 
