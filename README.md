@@ -40,7 +40,8 @@ Example:
     },
     ApplitoolsHelper: {
       require: 'codeceptjs-applitoolshelper',
-      applitoolsKey: 'YOUR_API_KEY'
+      applitoolsKey: 'YOUR_API_KEY',
+      debug: true // enable the verbose log
     }
   },
 ...
@@ -52,6 +53,7 @@ To use this helper you need to provide the following info:
 - `windowSize` (Optional): the windows size as for instance `1440x700`, if not provided, the default `1920x600` will be used. The windowSize will follow this precedence: ApplitoolsHelper, Webdriver.
 - `appName` (Optional): you can either provide your desired application name, if not provided, the default 'Application Under Test' will be used.
 - `batchInfo` (Optional): you can either provide your desired batch info, if not provided, the default 'Visual Tests with the Classic Runner' will be used.
+- `debug` (Optional):  enable the verbose log
 
 ### Scenario
 
