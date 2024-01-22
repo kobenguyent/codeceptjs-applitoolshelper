@@ -2,3 +2,7 @@ npm-debug.log
 node_modules
 package-lock.json
 .idea
+.DS_Store
+test/output
+test/package-lock.json
+test/node_modules

@@ -1,0 +1,19 @@
+{
+  "name": "applitools-example",
+  "version": "1.0.0",
+  "description": "This is an example repo for using applitools",
+  "main": "",
+  "dependencies": {
+    "@applitools/eyes-playwright": "1.23.6",
+    "codeceptjs": "3.5.11",
+    "playwright": "1.41.1"
+  },
+  "scripts": {
+    "test": "codeceptjs run --verbose"
+  },
+  "keywords": [
+    "applitools"
+  ],
+  "author": "kobenguyent",
+  "license": "ISC"
+}

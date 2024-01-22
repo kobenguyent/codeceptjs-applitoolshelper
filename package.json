@@ -23,5 +23,6 @@
     "@applitools/eyes-playwright": "1.23.6",
     "@applitools/eyes-puppeteer": "1.23.6",
     "@applitools/eyes-webdriverio": "5.50.6"
-  }
+  },
+  "files": ["lib/*", "index.js"]
 }

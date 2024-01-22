@@ -46,7 +46,7 @@ Example:
   },
 ...
 ```
-[![Screenshot](http://g.recordit.co/5kDTZ3TLAS.gif)]
+![Screenshot](http://g.recordit.co/5kDTZ3TLAS.gif)
 
 To use this helper you need to provide the following info:
 - `applitoolsKey` (Required): You can find your API key under the user menu located on the right hand side of the test manager toolbar
@@ -94,4 +94,76 @@ Scenario('Check home page @test', async () => {
 
 ```
 
-For your reference, you can check out this repo: https://github.com/PeterNgTr/applitools-example
+#### Test results
+
+Passed test:
+```
+CodeceptJS v3.5.11 #StandWithUkraine
+Using test root "/Users/t/Desktop/projects/applitools-example"
+Helpers: Playwright, ApplitoolsHelper
+Plugins: screenshotOnFail
+
+Applitools functionality --
+[1]  Starting recording promises
+Timeouts:
+› [Session] Starting singleton browser session
+Check home page @test
+I am on page "https://applitools.com/helloworld"
+I eye check {"pageName":"Homepage"}
+✔ OK in 17113ms
+
+
+OK  | 1 passed   // 17s
+```
+
+Failed test:
+```
+CodeceptJS v3.5.11 #StandWithUkraine
+Using test root "/Users/t/Desktop/projects/applitools-example"
+Helpers: Playwright, ApplitoolsHelper
+Plugins: screenshotOnFail
+
+Applitools functionality --
+    [1]  Starting recording promises
+    Timeouts: 
+ › [Session] Starting singleton browser session
+  Check home page @test
+    I am on page "https://applitools.com/helloworld"
+    I eye check {"pageName":"Homepage"}
+    I am on page "https://google.com"
+    › [Browser:Error] Permissions policy violation: unload is not allowed in this document.
+    I eye check {"pageName":"Homepage"}
+    [1] Error (Non-Terminated) | Error: Test 'Homepage' of 'Application Under Test' detected differences! See details at: https://eyes.applitools.com/app/batches/xxxx/xxxx?accountId=xxxx | (err) => { step.status = 'failed'; step.endTime = ...
+    [1] Error | Error: Test 'Homepage' of 'Application Under Test' detected differences! See details at: https://eyes.applitools.com/app/batches/00000251696383416241/xxxx/xxxx?accountId=xxxx (e) => { const err = (recorder.getAsyncErr() === n...
+    [1] <teardown> Stopping recording promises
+ › <screenshotOnFail> Test failed, try to save a screenshot
+ › Screenshot is saving to /Users/t/Desktop/projects/applitools-example/output/Check_home_page_@test.failed.png
+  ✖ FAILED in 43435ms
+
+    [2]  Starting recording promises
+
+-- FAILURES:
+
+  1) Applitools functionality
+       Check home page @test:
+     Test 'Homepage' of 'Application Under Test' detected differences! See details at: https://eyes.applitools.com/app/batches/xxxx/xxxx?accountId=xxxx
+      at ClassicRunner.getAllTestResults (node_modules/@applitools/eyes-api/dist/Runners.js:64:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+      at async Test.<anonymous> (applitools_test.js:9:5)
+  
+  Scenario Steps:
+  - I.eyeCheck({"pageName":"Homepage"}) at Test.<anonymous> (./applitools_test.js:9:13)
+  - I.amOnPage("https://google.com") at Test.<anonymous> (./applitools_test.js:8:7)
+  - I.eyeCheck({"pageName":"Homepage"}) at Test.<anonymous> (./applitools_test.js:7:13)
+  - I.amOnPage("https://applitools.com/helloworld") at Test.<anonymous> (./applitools_test.js:6:7)
+  
+  Artifacts:
+  - screenshot: /Users/t/Desktop/projects/applitools-example/output/Check_home_page_@test.failed.png
+
+
+  FAIL  | 0 passed, 1 failed   // 44s
+
+```
+
+### Example Repo
+To play around with this, you could checkout this repo: https://github.com/kobenguyent/applitools-example
