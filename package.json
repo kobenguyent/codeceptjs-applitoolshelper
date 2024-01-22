@@ -20,8 +20,8 @@
   "homepage": "https://github.com/kobenguyent/codeceptjs-applitoolshelper#readme",
   "main": "index.js",
   "dependencies": {
-    "@applitools/eyes-playwright": "1.11.3",
-    "@applitools/eyes-puppeteer": "1.11.4",
-    "@applitools/eyes-webdriverio": "5.32"
+    "@applitools/eyes-playwright": "1.23.6",
+    "@applitools/eyes-puppeteer": "1.23.6",
+    "@applitools/eyes-webdriverio": "5.50.6"
   }
 }

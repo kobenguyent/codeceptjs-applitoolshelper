@@ -63,7 +63,7 @@ class ApplitoolsHelper extends Helper {
      *
      */
     async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
-        const { eyes, Target } = initEyesSdk(_helper.toLowerCase(), this.config);
+        const { eyes, Target, Runner } = initEyesSdk(_helper.toLowerCase(), this.config);
 
         if (uniqueId) {
             eyes.setBatch(pageName, uniqueId);
@@ -83,7 +83,7 @@ class ApplitoolsHelper extends Helper {
         }
 
         await eyes.closeAsync();
-        return eyes.getResults();
+        return Runner.getAllTestResults();
     }
 }
 
