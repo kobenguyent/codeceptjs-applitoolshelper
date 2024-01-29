@@ -38,7 +38,11 @@
   ],
   "release": {
     "branches": [
-      "main", "master"
+      "main",
+      "master"
     ]
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.10"
   }
 }
