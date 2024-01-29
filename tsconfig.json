@@ -14,7 +14,7 @@
     "rootDir": "./src",
     "outDir": "./dist",
     "skipLibCheck": true,
-    "types": ["node", "codeceptjs"]
+    "types": ["node"]
   },
   "exclude": [
     "node_modules",
