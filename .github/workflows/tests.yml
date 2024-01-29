@@ -26,6 +26,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+      - name: Lint check
+        run: npm run lint
       - run: npm i && npx playwright install chromium
       - name: Run tests
         working-directory: ./test

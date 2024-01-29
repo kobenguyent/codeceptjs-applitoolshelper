@@ -21,21 +21,21 @@ helpers: {
     // ... Playwright configuration
   },
   ApplitoolsHelper: {
-    require: 'codeceptjs-applitoolshelper',
-    applitoolsKey: 'YOUR_API_KEY',
+    require: 'codeceptjs-applitoolshelper', 
+    apiKey: 'YOUR_API_KEY',
     debug: true // enable verbose log
     // ... other configuration options
   },
 }
 ```
 
-| Key             | Description                                                                                                                                                                                                     |
-|-----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `applitoolsKey` | (Required) API key found under the user menu on the right-hand side of the test manager toolbar.                                                                                                               |
-| `windowSize`    | (Optional) Window size, e.g., `1440x700`. If not provided, the default `1920x600` is used. The window size follows this precedence: ApplitoolsHelper, Webdriver.                                                |
-| `appName`       | (Optional) Desired application name. If not provided, the default 'Application Under Test' is used.                                                                                                           |
-| `batchInfo`     | (Optional) Desired batch info. If not provided, the default 'Visual Tests with the Classic Runner' is used.                                                                                                    |
-| `debug`         | (Optional) Enable verbose log.                                                                                                                                                                                  |
+| Key          | Description                                                                                                                                                                                                     |
+|--------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `apiKey`     | (Required) API key found under the user menu on the right-hand side of the test manager toolbar.                                                                                                               |
+| `windowSize` | (Optional) Window size, e.g., `1440x700`. If not provided, the default `1920x600` is used. The window size follows this precedence: ApplitoolsHelper, Webdriver.                                                |
+| `appName`    | (Optional) Desired application name. If not provided, the default 'Application Under Test' is used.                                                                                                           |
+| `batchInfo`  | (Optional) Desired batch info. If not provided, the default 'Visual Tests with the Classic Runner' is used.                                                                                                    |
+| `debug`      | (Optional) Enable verbose log.                                                                                                                                                                                  |
 
 
 ## Usage Example
