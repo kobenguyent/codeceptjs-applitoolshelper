@@ -13,7 +13,7 @@ exports.config = {
     },
     ApplitoolsHelper: {
       require: '../src/index',
-      applitoolsKey: process.env.APPLITOOLS_API_KEY
+      apiKey: process.env.APPLITOOLS_API_KEY
     }
   },
   plugins: {
