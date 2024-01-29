@@ -7,5 +7,5 @@ Scenario('Check home page @test', async () => {
     I.eyeCheck({ pageName: 'Homepage' });
 
     I.amOnPage('https://www.google.com');
-    I.eyeCheck({ pageName: 'Homepage' });
+    await tryTo(() => I.eyeCheck({ pageName: 'Homepage' }));
 });

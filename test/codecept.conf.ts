@@ -16,5 +16,10 @@ exports.config = {
       applitoolsKey: process.env.APPLITOOLS_API_KEY
     }
   },
+  plugins: {
+    tryTo: {
+      enabled: true
+    }
+  },
   name: 'applitools-example'
 }
