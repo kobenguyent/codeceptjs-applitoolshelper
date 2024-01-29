@@ -16,7 +16,7 @@ npm i webdriverio@5 --save
 
 ### Configuration
 
-This helper should be added in `codecept.conf.ts/codecept.conf.js`
+This helper should be added in `codecept.conf.ts/codecept.conf.ts`
 
 Example:
 
@@ -149,13 +149,13 @@ Applitools functionality --
      Test 'Homepage' of 'Application Under Test' detected differences! See details at: https://eyes.applitools.com/app/batches/xxxx/xxxx?accountId=xxxx
       at ClassicRunner.getAllTestResults (node_modules/@applitools/eyes-api/dist/Runners.js:64:23)
       at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
-      at async Test.<anonymous> (applitools_test.js:9:5)
+      at async Test.<anonymous> (applitools_test.ts:9:5)
   
   Scenario Steps:
-  - I.eyeCheck({"pageName":"Homepage"}) at Test.<anonymous> (./applitools_test.js:9:13)
-  - I.amOnPage("https://google.com") at Test.<anonymous> (./applitools_test.js:8:7)
-  - I.eyeCheck({"pageName":"Homepage"}) at Test.<anonymous> (./applitools_test.js:7:13)
-  - I.amOnPage("https://applitools.com/helloworld") at Test.<anonymous> (./applitools_test.js:6:7)
+  - I.eyeCheck({"pageName":"Homepage"}) at Test.<anonymous> (./applitools_test.ts:9:13)
+  - I.amOnPage("https://google.com") at Test.<anonymous> (./applitools_test.ts:8:7)
+  - I.eyeCheck({"pageName":"Homepage"}) at Test.<anonymous> (./applitools_test.ts:7:13)
+  - I.amOnPage("https://applitools.com/helloworld") at Test.<anonymous> (./applitools_test.ts:6:7)
   
   Artifacts:
   - screenshot: /Users/t/Desktop/projects/applitools-example/output/Check_home_page_@test.failed.png

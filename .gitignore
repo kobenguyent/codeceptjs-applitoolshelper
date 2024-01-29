@@ -6,3 +6,4 @@ package-lock.json
 test/output
 test/package-lock.json
 test/node_modules
+dist/*

@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
+      - name: Compile
+        run: npm run tsc
       - run: npx semantic-release
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
