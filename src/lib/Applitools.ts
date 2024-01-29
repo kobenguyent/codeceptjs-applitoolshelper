@@ -16,7 +16,7 @@ export function initEyesSdk(
 	const Batch = new BatchInfo({ name: config.batchInfo });
 	const Config = new Configuration();
 	Config.setBatch(Batch);
-	Config.setApiKey(config.applitoolsKey);
+	Config.setApiKey(config.apiKey);
 
 	const eyes = new Eyes(Runner, Config);
 
