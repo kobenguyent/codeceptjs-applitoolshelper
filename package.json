@@ -18,7 +18,6 @@
     "url": "https://github.com/kobenguyent/codeceptjs-applitoolshelper/issues"
   },
   "homepage": "https://github.com/kobenguyent/codeceptjs-applitoolshelper#readme",
-  "main": "src/index.ts",
   "dependencies": {
     "@applitools/eyes-playwright": "1.23.6",
     "@applitools/eyes-puppeteer": "1.23.6",
