@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "lib": ["es2017"],
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "declaration": false,
+    "strict": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "removeComments": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "skipLibCheck": true,
+    "types": ["node", "codeceptjs"]
+  },
+  "exclude": [
+    "node_modules",
+    "dist", "tests", "test"
+  ],
+  "compileOnSave": false
+}

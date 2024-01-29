@@ -1,5 +1,5 @@
 exports.config = {
-  tests: './*_test.js',
+  tests: './*_test.ts',
   output: './output',
   helpers: {
     Playwright: {
@@ -9,23 +9,17 @@ exports.config = {
           args: [ '--headless', '--disable-extensions', '--disable-gpu', '--no-sandbox', '--disable-dev-shm-usage']
         }
       },
-      windowSize: '1920x600',
-      smartWait: 5000,
-      timeouts: {
-        'script': 60000,
-        'page load': 10000
-      },
+      windowSize: '1920x600'
     },
     ApplitoolsHelper: {
-      require: '../index',
-      applitoolsKey: process.env.APPLITOOLS_API_KEY,
-      debug: false
+      require: '../src/index',
+      applitoolsKey: process.env.APPLITOOLS_API_KEY
     }
   },
-  include: {
-    I: './steps_file.js'
+  plugins: {
+    tryTo: {
+      enabled: true
+    }
   },
-  bootstrap: null,
-  mocha: {},
   name: 'applitools-example'
 }

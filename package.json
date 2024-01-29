@@ -18,11 +18,27 @@
     "url": "https://github.com/kobenguyent/codeceptjs-applitoolshelper/issues"
   },
   "homepage": "https://github.com/kobenguyent/codeceptjs-applitoolshelper#readme",
-  "main": "index.js",
+  "main": "src/index.ts",
   "dependencies": {
     "@applitools/eyes-playwright": "1.23.6",
     "@applitools/eyes-puppeteer": "1.23.6",
-    "@applitools/eyes-webdriverio": "5.50.6"
+    "@applitools/eyes-webdriverio": "5.50.6",
+    "deepmerge": "^4.3.1",
+    "typescript": "^4.9.5"
   },
-  "files": ["lib/*", "index.js"]
+  "scripts": {
+    "tsc": "tsc -d"
+  },
+  "peerDependencies": {
+    "codeceptjs": "3.5.12"
+  },
+  "files": [
+    "dist/*",
+    "README.md"
+  ],
+  "release": {
+    "branches": [
+      "main", "master"
+    ]
+  }
 }

@@ -1,4 +1,6 @@
-function initEyesSdk(sdk, config) {
+import { ApplitoolsHelperConfig } from '../types';
+
+export function initEyesSdk(sdk: string, config: ApplitoolsHelperConfig): { eyes: any, Target: any, Runner: any } {
     const { ClassicRunner, BatchInfo, Configuration, Eyes, Target, ConsoleLogHandler } = require(`@applitools/eyes-${sdk}`);
     const Runner = new ClassicRunner();
     const Batch = new BatchInfo({ name: config.batchInfo });
@@ -6,7 +8,8 @@ function initEyesSdk(sdk, config) {
     Config.setBatch(Batch);
     Config.setApiKey(config.applitoolsKey);
 
-    let eyes = new Eyes(Runner, Config);
+    const eyes = new Eyes(Runner, Config);
+
     if (config.debug) {
         eyes.setLogHandler(new ConsoleLogHandler(true));
     }
@@ -14,6 +17,3 @@ function initEyesSdk(sdk, config) {
     return { eyes, Target, Runner };
 };
 
-module.exports = {
-    initEyesSdk
-}
