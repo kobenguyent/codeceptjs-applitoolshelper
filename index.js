@@ -59,7 +59,7 @@ class ApplitoolsHelper extends Helper {
      * @param {String} pageName name of the page you want to check
      * @param {String} element selector of the target element which will be used as area for screenshot
      * @param {String} [uniqueId] provide a unique id to combine tests into a batch
-     * @param {String} [matchLevel] set the match level. Possible values: Exact, Strict, Content, Layout
+     * @param {String} [matchLevel] set the match level. Possible values: Exact, Strict, IgnoreColors, Layout
      *
      */
     async eyeCheck({ pageName, element, uniqueId, matchLevel }) {
@@ -83,7 +83,7 @@ class ApplitoolsHelper extends Helper {
         }
 
         await eyes.closeAsync();
-        return Runner.getAllTestResults();
+        return await Runner.getAllTestResults();
     }
 }
 
