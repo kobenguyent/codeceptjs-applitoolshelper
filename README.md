@@ -1,4 +1,7 @@
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/peternguyew)
+
+[![Acceptance Tests](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/tests.yml/badge.svg)](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/tests.yml) [![Publish npm Package](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/npm-publish.yml)
+
 [![NPM](https://nodei.co/npm/codeceptjs-applitoolshelper.png?compact=true)](https://nodei.co/npm/codeceptjs-applitoolshelper/)
 
 # codeceptjs-applitoolshelper
