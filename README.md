@@ -1,3 +1,4 @@
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-blue.svg)](https://paypal.me/peternguyentr?country.x=DE&locale.x=en_US)
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/peternguyew)
 
 [![Acceptance Tests](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/tests.yml/badge.svg)](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/tests.yml) [![Publish npm Package](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/npm-publish.yml/badge.svg)](https://github.com/kobenguyent/codeceptjs-applitoolshelper/actions/workflows/npm-publish.yml)
